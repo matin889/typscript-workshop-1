@@ -3,11 +3,11 @@
 // Se mer detaljerade instruktioner i koden
 
 const ex1 = () => {
-  const name: any = "Sandra";
-  const age: any = 25;
-  const isBirthday: any = false;
+  const name: string = "Sandra";
+  const age: number = 25;
+  const isBirthday: boolean = false;
 
-  const greet = (name: any, age: any, isBirthday: any): any => {
+  const greet = (name: string, age: number, isBirthday: boolean): void => {
     console.log(
       `Hey ya! ${name}, age ${age}, do you have a birthday today? ${isBirthday}`
     );
@@ -15,11 +15,11 @@ const ex1 = () => {
 
   greet(name, age, isBirthday);
 
-  const sum = (num1: any, num2: any): any => num1 + num2;
+  const sum = (num1: number, num2: number): number => num1 + num2;
 
   sum(1, 2);
 
-  const names: any = ["Sandra", "Stina", "Torsten"];
+  const names: string[] = ["Sandra", "Stina", "Torsten"];
 
   names.forEach((name) => {
     console.log(`Hi you one of all ${name}`);
@@ -29,14 +29,22 @@ const ex1 = () => {
 const ex2 = () => {
   // Deklarera en typ för Pizza
 
-  const pizza: any = {
+  type Pizza = {
+    name: string;
+    slices: number;
+    toppings: string[];
+    price: number;
+    vegan?: boolean;
+  };
+
+  const pizza: Pizza = {
     name: "Vesuvio",
     slices: 8,
     toppings: ["cheese", "tomato", "ham"],
     price: 80,
   };
 
-  const veganPizza: any = {
+  const veganPizza: Pizza = {
     name: "Vesuvio",
     slices: 8,
     toppings: ["cheese", "tomato", "squash"],
@@ -44,10 +52,10 @@ const ex2 = () => {
     vegan: true,
   };
 
-  const getPizzaInfo = (pizza: any): any => {
+  const getPizzaInfo = (pizza: Pizza): void => {
     console.log(pizza.name);
     console.log(pizza.slices);
-    pizza.toppings.forEach((topping: any) => {
+    pizza.toppings.forEach((topping) => {
       console.log(topping);
     });
     console.log(pizza.price);
@@ -178,7 +186,7 @@ const ex6 = () => {
 
 ex1();
 
-// ex2();
+ex2();
 
 // ex3();
 
