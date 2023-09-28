@@ -70,10 +70,11 @@ const ex2 = () => {
 
 const ex3 = () => {
   // Skapa en Person type och använd den i funktionen. Person ska vara en union type  av "User", "Admin" och "SuperAdmin"
+  type Person = "User" | "Admin" | "SuperAdmin";
 
-  const user: any = "Admin";
+  const user: Person = "Admin";
 
-  const getPriviligies = (user: any): any => {
+  const getPriviligies = (user: Person): void => {
     switch (user) {
       case "User":
         console.log("You have user right privileges");
@@ -188,7 +189,7 @@ ex1();
 
 ex2();
 
-// ex3();
+ex3();
 
 // ex4();
 
