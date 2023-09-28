@@ -98,14 +98,14 @@ const ex3 = () => {
 
 const ex4 = () => {
   const getPersonList = (
-    firstName: any,
+    firstName: string,
 
-    lastName: any,
+    lastName: string,
 
-    yearOfBirth: any,
+    yearOfBirth: number,
 
-    hasDriversLicense: any
-  ): any => {
+    hasDriversLicense: boolean
+  ): string => {
     return `<ul>
 
             <li><b>Förnamn:</b> ${firstName}</li>
@@ -119,37 +119,45 @@ const ex4 = () => {
         </ul>`;
   };
 
-  const personHTML: any = getPersonList("Sandra", "Larsson", 1998, true);
+  const personHTML: string = getPersonList("Sandra", "Larsson", 1998, true);
 
   console.log(personHTML);
 };
 
 const ex5 = () => {
   // Samma som ex4, men nu ska du skapa en typ för personen och använda den i funktionen
+  type Person = {
+    firstName: string;
 
-  const getPersonList = (
-    firstName: any,
+    lastName: string;
 
-    lastName: any,
+    yearOfBirth: number;
 
-    yearOfBirth: any,
+    hasDriversLicense: boolean;
+  };
 
-    hasDriversLicense: any
-  ): any => {
+  const getPersonList = (person: Person): string => {
     return `<ul>
 
-            <li><b>Förnamn:</b> ${firstName}</li>
+            <li><b>Förnamn:</b> ${person.firstName}</li>
 
-            <li><b>Efternamn:</b> ${lastName}</li>
+            <li><b>Efternamn:</b> ${person.lastName}</li>
 
-            <li><b>Födelseår:</b> ${yearOfBirth}</li>
+            <li><b>Födelseår:</b> ${person.yearOfBirth}</li>
 
-            <li><b>Har körkort:</b> ${hasDriversLicense ? "Ja" : "Nej"}</li>
+            <li><b>Har körkort:</b> ${
+              person.hasDriversLicense ? "Ja" : "Nej"
+            }</li>
 
         </ul>`;
   };
-
-  const personHTML: any = getPersonList("Sandra", "Larsson", 1998, true);
+  const person: Person = {
+    firstName: "Sandra",
+    lastName: "Larsson",
+    yearOfBirth: 1998,
+    hasDriversLicense: true,
+  };
+  const personHTML: string = getPersonList(person);
 
   console.log(personHTML);
 };
@@ -157,10 +165,17 @@ const ex5 = () => {
 const ex6 = () => {
   // Skapa en typ temperatureMeasurement och använd den i funktionen
 
-  const getSummerNightsTemperature = (tempMeasurements: any): any =>
-    tempMeasurements.filter((data: any) => data.temp > 10);
+  type temperatureMeasurement = {
+    day: number;
+    temp: number;
+  };
 
-  const tempMeasurements: any = [
+  const getSummerNightsTemperature = (
+    tempMeasurements: temperatureMeasurement[]
+  ): temperatureMeasurement[] =>
+    tempMeasurements.filter((data) => data.temp > 10);
+
+  const tempMeasurements: temperatureMeasurement[] = [
     {
       day: 1,
 
@@ -180,7 +195,8 @@ const ex6 = () => {
     },
   ];
 
-  const summerTemperatures: any = getSummerNightsTemperature(tempMeasurements);
+  const summerTemperatures: temperatureMeasurement[] =
+    getSummerNightsTemperature(tempMeasurements);
 
   console.log(summerTemperatures);
 };
@@ -191,8 +207,8 @@ ex2();
 
 ex3();
 
-// ex4();
+ex4();
 
-// ex5();
+ex5();
 
-// ex6();
+ex6();
